@@ -1,22 +1,29 @@
 ### Git Intro
 
 - **What's Git?**
+
   - Git is a version control system
   - Version control is a software that tracks and manages changes to files over time
   - Git can be used in command line or GUI (such as Gitkraken)
 
 - **Configure Git Name & Email**
+
 ```
+// config globally
 git config --global user.name "Your Name"
 git config --global user.email "Your Email"
 git config user.name // check if you have already had an user name
 git config user.email // check if you have already had an email
+
+
+// config locally
+git config credential.username "your_username"
+git config user.email "your_email"
 ```
-
-
 
 - **Terminal command line cheatsheet**
 - Navigation
+
 ```
 ls // list all the files in current directory
 cd file // direct to the file
@@ -29,21 +36,24 @@ cd .. directory back to previous level folder - the parent folder
 ```
 
 - Creating Files & Folders
+
 ```
 touch newFile.js // create a new file called newFile.js
 mkdir KUKU // create a new folder called KUKU
 ```
 
 - Deleting Files & Folders
+
 ```
 rm files // permanently delete files
 ls -a // shows all files include hidden Files
 rm -rf Folder // permanently delete folder
 ```
 
-
 ### Git Adding & Committing
+
 - Repository:
+
   - A Git "Repo" is a workspace which tracks and manages files within a folder
   - Anytime we want to use Git with a project, app, etc, we need to create a new git repo.
 
@@ -51,11 +61,12 @@ rm -rf Folder // permanently delete folder
 - For the best practice, only initiate repo for the project folder rather than the whole desktop or system
 - **rm -rf .git** // remove the repository
 - Adding: uses git add to **add specific files to the staging area**. Separate files with spaces ti add multiple at once.
+
   - **git add file1 file2**
   - **git add .**
 
-
 - Git Commit:
+
   - **commit changes from the staging area**
   - When making a commit, we need to provide a commit message that summarizes the changes and work snapshotted in the commit
   - **git commit -m ""message"**
@@ -66,11 +77,11 @@ rm -rf Folder // permanently delete folder
     - first use git add file you forget
     - then git commit --amend
 
-
 - **.gitignore file**
   - add files you want git ignored such as **.DS_Store**
 
 ### Branching
+
 - Think of branches as alternative timelines for a project
 - They enable us to create separate contexts where we can try new things or even work on multiple ideas in parallel
 - If we make changes on one branch, they do not impact the other branches
@@ -93,19 +104,23 @@ rm -rf Folder // permanently delete folder
   - **git branch -m newBranchName** - switch the branch you want to rename and use the command
 
 ### Merging
+
 - git merge helps us incorporate changes from one branch into another
 - we merge **branches** not specific commits
 - We always merge to the current **HEAD** branch
 - To fast-forward merge, there are 2 steps:
-1. Switch to or checkout the branch you  want to merge the changes into (the receiving branch)
+
+1. Switch to or checkout the branch you want to merge the changes into (the receiving branch)
 2. Use the git merge command to merge changes from a specific branch into the current branch.
-  - **git switch master**
-  - **git merge bugfix**
+
+- **git switch master**
+- **git merge bugfix**
 
 - Rather than performing a simple fast forward, git performs a "merge commit". We end up with a new commit on the master branch.
 - Git will prompt you for a message.
 
 - **Merge Conflicts**
+
   - Depending on the specific changes you are trying to merge, Git may not be able to automatically merge. This results in merge conflict, which you need to manually resolve.
   - When you open the file:
     - the content from your current HEAD is displayed between the <<<<<<< HEAD and =======
@@ -118,14 +133,15 @@ rm -rf Folder // permanently delete folder
   - Step 4: Add your changes and then make a commit
 
 ### Git Diff
+
 - use **git diff** to view changes between commits, branches, files, our working directory, and more
 - use git diff with git status and git log to get a better picture of a repo and how it has changed over time
 - **git diff**: lists al the changes in our working directory that are not Staged for the next commit(any changes before you made git add).
 - Reading the result of git diff:
   - **diff --git a/file b/file**: Compared Files
-      - For each comparison, git explains which files it is comparing.
-      - this usually just two versions of the same file with changes..
-      - Git also declares one file as "a" and the other as "b"
+    - For each comparison, git explains which files it is comparing.
+    - this usually just two versions of the same file with changes..
+    - Git also declares one file as "a" and the other as "b"
   - then we can skip something like "index 2505c34..1ed8bcc 100644" - it's just hash
   - then we can see two lines of Markers:
     - **--- a/file**: file a has a minus sign
@@ -144,15 +160,16 @@ rm -rf Folder // permanently delete folder
   - shows what will be included in my commit if I run git commit rn.
   - shows differences after git add is made (when it is in the staging)
 - **git diff HEAD**: lists all changes in the working tree since your last commit including things that are staged (thing after you do git add)
--  view the changes within a specific files by providing git diff with a file name
-  - **git diff HEAD [filename]**
-  - **git diff --staged [filename]**
+- view the changes within a specific files by providing git diff with a file name
+- **git diff HEAD [filename]**
+- **git diff --staged [filename]**
 - **git diff branch1..branch2**: list the changes between the tips of branch1 and branch2
 - **git diff commit1..commit2**: to compare two commits, provide git diff with the **commit hashes** of the commits in question
 
-
 ### Stashing
+
 - Sometimes we are working something but you are not done yet and do not want to make a commit. However, you have to go to other branches.
+
   - git will makes your current changes come with you to the destination branch if there is no conflict
     - if you switch over to previous branch and add it commit; the change you brought to destination branch will disappear
   - or git won't let you switch if it detects potential conflicts
@@ -171,12 +188,13 @@ rm -rf Folder // permanently delete folder
 - **git stash clear**: delete all stashes
 
 ### Undoing Changes & Time Traveling
+
 - **git checkout <commit hash>**: jump back a previous commit
   - **Detached HEAD**:
     - Usually, HEAD points to a specific branch reference rather than a particular commit.
     - When we checkout a particular commit, HEAD points at that commit rather than at the branch pointer.
     - Options:
-      1. Stay in  detached HEAD to examine the contents of the previous commit.
+      1. Stay in detached HEAD to examine the contents of the previous commit.
       2. LEAVE and go back to wherever you were before - reattached the header. - git switch
       3. Create a new branch and switch to it. You can now make and save changes, since HEAD is no longer detached.
 - **git checkout HEAD~1**: refers to the commit before HEAD
@@ -196,6 +214,7 @@ rm -rf Folder // permanently delete folder
   - If you want to reverse commits that you haven't shared with others, use reset and no one will ever know.
 
 ### GitHub
+
 - **git clone URL**: get a local copy of a remote repo hosted on Github or similar repo host websites.
   - We need a URL that we can tell git to clone for use.
   - the repo you cloned to your local machine will all the files and commits.
@@ -204,9 +223,9 @@ rm -rf Folder // permanently delete folder
   - Your terminal will prompt you every single time for your GitHub email and password
   - However, if you generate and configure an SSH key, you can connect to GitHub without having to supply your username and password every time.
   - Step 1: check if you've already had a SSH keys by enter command:
-  ```
-  ls -al ~/.ssh
-  ```
+    ```
+    ls -al ~/.ssh
+    ```
   - Step 2: if not, generate a new SSH key by following the instruction on
     - [Generate SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 - **git remote**:
@@ -220,24 +239,23 @@ rm -rf Folder // permanently delete folder
     - the URL is the repo url on the GitHub repo
   - **git push origin master**: push up the master branch to origin remote
   - While we often want to push a local branch up to a remote branch of the same name, we don't have to. To push our local pancake branch up to a remote waffle branch we can just do:
-  ```
-  git push origin pancake:waffler
-  ```
+    ```
+    git push origin pancake:waffler
+    ```
 
-### Fetching & Pulling
+<!-- ### Fetching & Pulling
 
 ### Odds & Ends
 
-
 ### Git Collaboration Workflows
 
-
 ### Rebasing
+
 - Why we are using rebase command?
   - as an alternative to merging to help combine changes from two branches
-  - as a cleanup tool
+  - as a cleanup tool -->
 
-
+<!--
 ### Interactive Rebase - History Cleanup
 
 
@@ -255,4 +273,4 @@ rm -rf Folder // permanently delete folder
 
 
 
-### Custom Git Aliases
+### Custom Git Aliases -->
