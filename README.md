@@ -1,3 +1,3 @@
 # Cheatsheet of Git
 
-- This file lists all the basic operation of git
+- Summary: The file VersionControl.md lists all the basic operations of git
