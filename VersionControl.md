@@ -49,6 +49,7 @@ rm files // permanently delete files
 ls -a // shows all files include hidden Files
 rm -rf Folder // permanently delete folder
 ```
+****
 
 ### Git Adding & Committing
 
@@ -80,6 +81,8 @@ rm -rf Folder // permanently delete folder
 - **.gitignore file**
   - add files you want git ignored such as **.DS_Store**
 
+****
+
 ### Branching
 
 - Think of branches as alternative timelines for a project
@@ -102,6 +105,8 @@ rm -rf Folder // permanently delete folder
   - **git branch -D branchName** - delete the branch
     - remember: we cannot delete a branch when we are on that branch so we have to switch to other branch
   - **git branch -m newBranchName** - switch the branch you want to rename and use the command
+
+****
 
 ### Merging
 
@@ -131,6 +136,8 @@ rm -rf Folder // permanently delete folder
   - Step 2: Edit the files to remove the conflicts. Decide which branch's content you wanna keep in each conflict. Or keep the content from both.
   - Step 3: Remove the conflict markers in the document in VSCode
   - Step 4: Add your changes and then make a commit
+
+****
 
 ### Git Diff
 
@@ -166,6 +173,10 @@ rm -rf Folder // permanently delete folder
 - **git diff branch1..branch2**: list the changes between the tips of branch1 and branch2
 - **git diff commit1..commit2**: to compare two commits, provide git diff with the **commit hashes** of the commits in question
 
+
+****
+
+
 ### Stashing
 
 - Sometimes we are working something but you are not done yet and do not want to make a commit. However, you have to go to other branches.
@@ -186,6 +197,10 @@ rm -rf Folder // permanently delete folder
   - **git stash apply stash@{list number}**
 - **git stash drop stash@{list number}**: delete a particular stash
 - **git stash clear**: delete all stashes
+
+
+****
+
 
 ### Undoing Changes & Time Traveling
 
@@ -212,6 +227,10 @@ rm -rf Folder // permanently delete folder
   - git reset and git revert have a significant difference when it comes to collaboration.
   - If you want to revert some commits that other people already have on their machines, you should use revert.
   - If you want to reverse commits that you haven't shared with others, use reset and no one will ever know.
+
+
+****
+
 
 ### GitHub
 
@@ -244,17 +263,38 @@ rm -rf Folder // permanently delete folder
     git push origin pancake:waffler
     ```
 
-
+****
 
  ### Fetching & Pulling
-- Remote tracking Branches:
+- **Remote tracking Branches**:
   - It follows the pattern **remote name/branch name**
   - origin/master: this is called remote tracking branch. It's reference to the state of the master branch on the remote. I can't move this myself. It's pointing to the last commit on the master branch on origin remote.
   - upstream/logoRedesign: references the state of the logoRedesign branch on the remote named upstream.
-  - **git branch -r**: view the remote branches our local repo knows about
+  - **git branch -r**: view all the remote branches our local repo knows about
 
   - **You branch is ahead of 'origin/main' by 1 commit**: means you made1 commit after you clone the origin repo on your local machine.
-  - **git checkout origin/master**:
+  - **git checkout origin/master**: switch branch to the origin/master.
+  - Every time you clone a repo, by default, your current local branch master is already tracking origin/master. If you want to connect to other remote branch, you can just use **git switch remote-branch-name** to create a new local branch from the remote branch of the **same** name.
+- **Fetching**:
+  - allows us to download changes fro a remote repo, BUT those changes will not
+  automatically integrated into our working files.
+  - It lets you see what others have been working on, without having to merge those changes into your local repo.
+  - Think of it as "please fo and get the latest information from GitHub, but don't screw up my working directory".
+  - It updates the origin/master not the local master branch, so your current working directory does not change.
+  - **git fetch origin/remote-name**: fetches branches and history form a specific remote repo. It only updates remote tracking branches.
+  - **git fetch remote-name branch-name**: fetches a specific branch from a remote.
+
+
+- **Pulling**:
+  - Unlike fetching, pulling will update our working directory or our current HEAD branch with whatever changes are retrieved form the remote.
+  - **git pull origin master**: fetch the latest information from the origin's master branch and merge those changes into our current local branch.   
+  - Running **git pull** without specifying a particular remote or branch to pull form, git assumes the following:
+    - remote will default to origin
+    - branch will default to whatever tracking connection is configured for your current branch (the same name matched to the remote repo branch name).
+- fetch & pull conflicts sometimes happen and need to be fixed.
+
+****
+
 
 <!-- ### Odds & Ends
 
