@@ -228,6 +228,7 @@ rm -rf Folder // permanently delete folder
     ```
   - Step 2: if not, generate a new SSH key by following the instruction on
     - [Generate SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+  - Step3: Make sure you config the correct git username and email that are matched to the one you are working on in GitHub.
 - **git remote**:
   - Before we can push anything up to GitHub we need to tell git about our remote repository on Github.
   - We need to set up a destination to push up to.
@@ -237,23 +238,33 @@ rm -rf Folder // permanently delete folder
   - **git remote add name url**: a remote has 2 things: a name and a url. To add a new remote, we need to provide both to git
     - the remote name is usually called origin but you can change it to other names
     - the URL is the repo url on the GitHub repo
-  - **git push origin master**: push up the master branch to origin remote
+  - **git push origin master/other branch names**: push up the master branch to origin remote
   - While we often want to push a local branch up to a remote branch of the same name, we don't have to. To push our local pancake branch up to a remote waffle branch we can just do:
     ```
     git push origin pancake:waffler
     ```
 
-<!-- ### Fetching & Pulling
 
-### Odds & Ends
 
-### Git Collaboration Workflows
+ ### Fetching & Pulling
+- Remote tracking Branches:
+  - It follows the pattern **remote name/branch name**
+  - origin/master: this is called remote tracking branch. It's reference to the state of the master branch on the remote. I can't move this myself. It's pointing to the last commit on the master branch on origin remote.
+  - upstream/logoRedesign: references the state of the logoRedesign branch on the remote named upstream.
+  - **git branch -r**: view the remote branches our local repo knows about
+
+  - **You branch is ahead of 'origin/main' by 1 commit**: means you made1 commit after you clone the origin repo on your local machine.
+  - **git checkout origin/master**:
+
+<!-- ### Odds & Ends
+
+### Git Collaboration Workflows -->
 
 ### Rebasing
 
 - Why we are using rebase command?
   - as an alternative to merging to help combine changes from two branches
-  - as a cleanup tool -->
+  - as a cleanup tool
 
 <!--
 ### Interactive Rebase - History Cleanup
