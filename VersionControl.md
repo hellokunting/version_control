@@ -8,48 +8,49 @@
 
 - **Configure Git Name & Email**
 
-```
-// config globally
-git config --global user.name "Your Name"
-git config --global user.email "Your Email"
-git config user.name // check if you have already had an user name
-git config user.email // check if you have already had an email
+  ```
+  // config globally
+  git config --global user.name "Your Name"
+  git config --global user.email "Your Email"
+  git config user.name // check if you have already had an user name
+  git config user.email // check if you have already had an email
 
 
-// config locally
-git config credential.username "your_username"
-git config user.email "your_email"
-```
+  // config locally
+  git config credential.username "your_username"
+  git config user.email "your_email"
+  ```
 
-- **Terminal command line cheatsheet**
+- **Terminal command line cheat-sheet**
 - Navigation
 
-```
-ls // list all the files in current directory
-cd file // direct to the file
-open . // open the folder of current directory
-ls app // list all the files within the app
-open  app// open the folder app
-ls Parent/Child // list all files in Child fold whose in the Parent folder
-pwd // print the current path
-cd .. directory back to previous level folder - the parent folder
-```
+  ```
+  ls // list all the files in current directory
+  cd file // direct to the file
+  open . // open the folder of current directory
+  ls app // list all the files within the app
+  open  app// open the folder app
+  ls Parent/Child // list all files in Child fold whose in the Parent folder
+  pwd // print the current path
+  cd .. directory back to previous level folder - the parent folder
+  ```
 
 - Creating Files & Folders
 
-```
-touch newFile.js // create a new file called newFile.js
-mkdir KUKU // create a new folder called KUKU
-```
+  ```
+  touch newFile.js // create a new file called newFile.js
+  mkdir KUKU // create a new folder called KUKU
+  ```
 
 - Deleting Files & Folders
 
-```
-rm files // permanently delete files
-ls -a // shows all files include hidden Files
-rm -rf Folder // permanently delete folder
-```
-****
+  ```
+  rm files // permanently delete files
+  ls -a // shows all files include hidden Files
+  rm -rf Folder // permanently delete folder
+  ```
+
+---
 
 ### Git Adding & Committing
 
@@ -58,7 +59,7 @@ rm -rf Folder // permanently delete folder
   - A Git "Repo" is a workspace which tracks and manages files within a folder
   - Anytime we want to use Git with a project, app, etc, we need to create a new git repo.
 
-- To intialize a Repo - **git init**
+- To initialize a Repo - **git init**
 - For the best practice, only initiate repo for the project folder rather than the whole desktop or system
 - **rm -rf .git** // remove the repository
 - Adding: uses git add to **add specific files to the staging area**. Separate files with spaces ti add multiple at once.
@@ -69,7 +70,7 @@ rm -rf Folder // permanently delete folder
 - Git Commit:
 
   - **commit changes from the staging area**
-  - When making a commit, we need to provide a commit message that summarizes the changes and work snapshotted in the commit
+  - When making a commit, we need to provide a commit message that summarizes the changes and work snapshots in the commit
   - **git commit -m ""message"**
     - the -m flag allows us to pass in an inline commit message, rather than launching a text editor
   - **git log**: a log of your commits
@@ -81,7 +82,7 @@ rm -rf Folder // permanently delete folder
 - **.gitignore file**
   - add files you want git ignored such as **.DS_Store**
 
-****
+---
 
 ### Branching
 
@@ -106,7 +107,7 @@ rm -rf Folder // permanently delete folder
     - remember: we cannot delete a branch when we are on that branch so we have to switch to other branch
   - **git branch -m newBranchName** - switch the branch you want to rename and use the command
 
-****
+---
 
 ### Merging
 
@@ -137,17 +138,17 @@ rm -rf Folder // permanently delete folder
   - Step 3: Remove the conflict markers in the document in VSCode
   - Step 4: Add your changes and then make a commit
 
-****
+---
 
 ### Git Diff
 
 - use **git diff** to view changes between commits, branches, files, our working directory, and more
 - use git diff with git status and git log to get a better picture of a repo and how it has changed over time
-- **git diff**: lists al the changes in our working directory that are not Staged for the next commit(any changes before you made git add).
+- **git diff**: lists all the changes in our working directory that are not Staged for the next commit(any changes before you made git add).
 - Reading the result of git diff:
   - **diff --git a/file b/file**: Compared Files
     - For each comparison, git explains which files it is comparing.
-    - this usually just two versions of the same file with changes..
+    - this is usually just two versions of the same file with changes..
     - Git also declares one file as "a" and the other as "b"
   - then we can skip something like "index 2505c34..1ed8bcc 100644" - it's just hash
   - then we can see two lines of Markers:
@@ -165,30 +166,28 @@ rm -rf Folder // permanently delete folder
       - lines that begin with + come from file b
 - **git diff --staged/--cached**: list the changes between the staging area and out last commit
   - shows what will be included in my commit if I run git commit rn.
-  - shows differences after git add is made (when it is in the staging)
+  - shows differences after git add are made (when it is in the staging)
 - **git diff HEAD**: lists all changes in the working tree since your last commit including things that are staged (thing after you do git add)
-- view the changes within a specific files by providing git diff with a file name
+- view the changes within a specific file by providing git diff with a file name
 - **git diff HEAD [filename]**
 - **git diff --staged [filename]**
 - **git diff branch1..branch2**: list the changes between the tips of branch1 and branch2
 - **git diff commit1..commit2**: to compare two commits, provide git diff with the **commit hashes** of the commits in question
 
-
-****
-
+---
 
 ### Stashing
 
-- Sometimes we are working something but you are not done yet and do not want to make a commit. However, you have to go to other branches.
+- Sometimes we are working on something but you are not done yet and do not want to make a commit. However, you have to go to other branches.
 
-  - git will makes your current changes come with you to the destination branch if there is no conflict
+  - git will make your current changes come with you to the destination branch if there is no conflict
     - if you switch over to previous branch and add it commit; the change you brought to destination branch will disappear
   - or git won't let you switch if it detects potential conflicts
 
 - What should I do? - use **git stash**
-  - Git provide an easy way of stashing these uncommitted changes so that we can return to them later, without having to make unnecessary commits.
+  - Git provides an easy way of stashing these uncommitted changes so that we can return to them later, without having to make unnecessary commits.
   - git stash helps you save changes that you are not yet committed. You can stash changes and then come back to them later.
-  - Running git stash will take all uncommitted changes (staged and upstaged) and stash them ,reverting the changes in your working copy.
+  - Running git stash will take all uncommitted changes (staged and upstaged) and stash them, reverting the changes in your working copy.
 - **git stash pop**: remove the most recently stashed changes in your stash and re-apply them to your working copy
 - **git stash apply**: apply whatever is stashed away, without removing it from the stash. This can be useful if you want to apply stashed changes to multiple branches.
   - conflicts may occur
@@ -198,9 +197,7 @@ rm -rf Folder // permanently delete folder
 - **git stash drop stash@{list number}**: delete a particular stash
 - **git stash clear**: delete all stashes
 
-
-****
-
+---
 
 ### Undoing Changes & Time Traveling
 
@@ -220,17 +217,15 @@ rm -rf Folder // permanently delete folder
 - **git restore <filename>**: just like checkout to redo or discard the changes
 - **git restore --source HEAD~1 home.html**: restore the contents of home-html to its state from the commit prior to HEAD.
   - HAED~1 can change to commit hash
-- **git reset commit-hash**: reset the repo back to a specific commit. The commits are gone but the content still keeps. Useful if we make a commit at a wrong branch. You just switch to the correct branch and make a new commit
+- **git reset commit-hash**: reset the repo back to a specific commit. The commits are gone but the content still keeps. Useful if we make a commit at the wrong branch. You just switch to the correct branch and make a new commit
 - **git reset --hard commit-hash**: undo the commits AND discard changes in the file.
-- **git revert**: similar to git reset that they both undo changes. git revert creates a new commit which undos the changes from a commit.
+- **git revert**: similar to git reset that they both undo changes. git revert creates a new commit that undoes the changes from a commit.
 - **When to use git reset and git revert?**
   - git reset and git revert have a significant difference when it comes to collaboration.
   - If you want to revert some commits that other people already have on their machines, you should use revert.
   - If you want to reverse commits that you haven't shared with others, use reset and no one will ever know.
 
-
-****
-
+---
 
 ### GitHub
 
@@ -241,17 +236,18 @@ rm -rf Folder // permanently delete folder
   - We need to be authenticated on GitHub to do certain operations, like pushing up code from local machine.
   - Your terminal will prompt you every single time for your GitHub email and password
   - However, if you generate and configure an SSH key, you can connect to GitHub without having to supply your username and password every time.
-  - Step 1: check if you've already had a SSH keys by enter command:
+  - Step 1: check if you've already had a SSH keys by entering command:
     ```
     ls -al ~/.ssh
     ```
   - Step 2: if not, generate a new SSH key by following the instruction on
     - [Generate SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-  - Step3: Make sure you config the correct git username and email that are matched to the one you are working on in GitHub.
+  - Step3: Make sure your config the correct git username and email that are matched to the one you are working on in GitHub.
 - **git remote**:
+
   - Before we can push anything up to GitHub we need to tell git about our remote repository on Github.
   - We need to set up a destination to push up to.
-  - In git, we refer to these "destination" as remotes. Each remote is simply a URL where a hosted repo lives.
+  - In git, we refer to these "destinations" as remotes. Each remote is simply a URL where a hosted repo lives.
   - We use **git remote** to check if there is any remote already exists
   - We use **git remote -v** lists urls for remote repo
   - **git remote add name url**: a remote has 2 things: a name and a url. To add a new remote, we need to provide both to git
@@ -263,50 +259,86 @@ rm -rf Folder // permanently delete folder
     git push origin pancake:waffler
     ```
 
-****
+- How to add collaborators in GitHub?
 
- ### Fetching & Pulling
+  - Settings -> Manage access -> Invite a collaborator -> collaborator's GitHub username
+
+- Some Features of GitHub:
+
+  - README includes:
+
+    - What the project does
+    - How to run the project
+    - What noteworthy
+    - Who maintains the project
+
+  - GitHub Gists:
+    - a simple way to share code snippets and useful fragments with others. Gists are much easier to create but offer far fewer features than a typical GitHub repo.
+    - Your profile icon -> your gists
+  - gh pages:
+    - GitHub Pages are public webpages that are hosted and published via GitHub.
+    - They allow you to create a website simply by pushing your code to GitHub.
+
+---
+
+### Fetching & Pulling
+
 - **Remote tracking Branches**:
+
   - It follows the pattern **remote name/branch name**
-  - origin/master: this is called remote tracking branch. It's reference to the state of the master branch on the remote. I can't move this myself. It's pointing to the last commit on the master branch on origin remote.
+  - origin/master: this is called remote tracking branch. It's a reference to the state of the master branch on the remote. I can't move this myself. It's pointing to the last commit on the master branch on origin remote.
   - upstream/logoRedesign: references the state of the logoRedesign branch on the remote named upstream.
   - **git branch -r**: view all the remote branches our local repo knows about
 
-  - **You branch is ahead of 'origin/main' by 1 commit**: means you made1 commit after you clone the origin repo on your local machine.
+  - **Your branch is ahead of 'origin/main' by 1 commit**: means you made1 commit after you clone the origin repo on your local machine.
   - **git checkout origin/master**: switch branch to the origin/master.
-  - Every time you clone a repo, by default, your current local branch master is already tracking origin/master. If you want to connect to other remote branch, you can just use **git switch remote-branch-name** to create a new local branch from the remote branch of the **same** name.
+  - Every time you clone a repo, by default, your current local branch master is already tracking origin/master. If you want to connect to other remote branches, you can just use **git switch remote-branch-name** to create a new local branch from the remote branch of the **same** name.
+
 - **Fetching**:
-  - allows us to download changes fro a remote repo, BUT those changes will not
-  automatically integrated into our working files.
+
+  - allows us to download changes from a remote repo, BUT those changes will not
+    automatically integrated into our working files.
   - It lets you see what others have been working on, without having to merge those changes into your local repo.
   - Think of it as "please fo and get the latest information from GitHub, but don't screw up my working directory".
-  - It updates the origin/master not the local master branch, so your current working directory does not change.
-  - **git fetch origin/remote-name**: fetches branches and history form a specific remote repo. It only updates remote tracking branches.
+  - It updates the origin/master, not the local master branch, so your current working directory does not change.
+  - **git fetch origin/remote-name**: fetches branches and history from a specific remote repo. It only updates remote tracking branches.
   - **git fetch remote-name branch-name**: fetches a specific branch from a remote.
 
-
 - **Pulling**:
-  - Unlike fetching, pulling will update our working directory or our current HEAD branch with whatever changes are retrieved form the remote.
-  - **git pull origin master**: fetch the latest information from the origin's master branch and merge those changes into our current local branch.   
-  - Running **git pull** without specifying a particular remote or branch to pull form, git assumes the following:
+  - Unlike fetching, pulling will update our working directory or our current HEAD branch with whatever changes are retrieved from the remote.
+  - **git pull origin master**: fetch the latest information from the origin's master branch and merge those changes into our current local branch.
+  - Running **git pull** without specifying a particular remote or branch to pull from, git assumes the following:
     - remote will default to origin
     - branch will default to whatever tracking connection is configured for your current branch (the same name matched to the remote repo branch name).
 - fetch & pull conflicts sometimes happen and need to be fixed.
 
-****
+---
 
+### Git Collaboration Workflows
 
-<!-- ### Odds & Ends
+- **Centralized Workflow**:
 
-### Git Collaboration Workflows -->
+  - AKA 'Everyone Works On Master/Main'
+  - AKA 'The Most Basic Workflow Possible'
+  - shortcomings: - lost of time spent resolving merging conflicts - no one can work on anything without distributing the main codebase.
 
-### Rebasing
+- **Feature Branches Workflow**
+  - Rather than working directly on master/main, all new development should be done on separate branches.
+  - Treat master/main branch as the official project history
+  - Allows multiple teammates to collaborate on a single feature and share code back and forth without polluting the master/main
+  - **Merging in Feature Branches**:
+    - At some points, some feature branches need to be merged to the master branch
+      - You can send an email or char message to your team to discuss if the changes should be merged in.
+      - Or you can use **Pull Requests**
+
+<!-- ### Rebasing
 
 - Why we are using rebase command?
   - as an alternative to merging to help combine changes from two branches
-  - as a cleanup tool
+  - as a cleanup tool -->
 
 <!--
+
 ### Interactive Rebase - History Cleanup
 
 
