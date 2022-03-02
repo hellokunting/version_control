@@ -323,19 +323,48 @@
   - shortcomings: - lost of time spent resolving merging conflicts - no one can work on anything without distributing the main codebase.
 
 - **Feature Branches Workflow**
+
   - Rather than working directly on master/main, all new development should be done on separate branches.
   - Treat master/main branch as the official project history
   - Allows multiple teammates to collaborate on a single feature and share code back and forth without polluting the master/main
   - **Merging in Feature Branches**:
+
     - At some points, some feature branches need to be merged to the master branch
+
       - You can send an email or char message to your team to discuss if the changes should be merged in.
       - Or you can use **Pull Requests**
 
-<!-- ### Rebasing
+    - **Pull Request**
+
+      - not native to Git
+
+      - a feature built in to products like GitHub
+      - The Workflow:
+        1. Do some work locally on a feature branch
+        2. Push up the feature branch to GitHub
+        3. Open a pull request using the feature branch pushed up
+        4. Wait for project to be approved and merged.
+      - pull request with merge conflicts
+        - option1: resolve it on the browser
+        - option2: command line instruction
+
+    - **Configure Branch Protection Rules**
+      - Repo -> Settings -> Branches -> Branch Protection Rules
+      - enter the branch and click rules
+
+- **Fork & Clone Workflow**
+
+  - Instead of just one ceNtralized repo, every developers has their own repo in addition to the main repo.
+  - Developers make changes and push to their own forks before making pull requests.
+  - very commonly used on large open-source projects where there may be thousands of contributors with only a couple maintainers
+
+  ***
+
+### Rebasing
 
 - Why we are using rebase command?
   - as an alternative to merging to help combine changes from two branches
-  - as a cleanup tool -->
+  - as a cleanup tool
 
 <!--
 
