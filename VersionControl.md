@@ -392,14 +392,45 @@
   - **reword** - use the commit but edit the commit message
   - **edit** - use commit but stop for amending
   - **fixup** - use commit contents but meld it into previous commit and discard the commit message
-  - **drop** - remove commit
+  - **drop** - remove commit as well as the content changes made in the commit
 
-<!--
+---
 
 ### Git Tags
 
-### Hashing & Objects
+- Tags are pointers that refer to particular points in Git history. We can mark a particular moment in time with a tag. Tags are most often used to mark version releases in projects
+- Think of tags as branch references that do NOT CHANGE. Once a tag is created, it always refers to the same commit.
+- Tag is just a label for a commit.
+- Two types of tags:
+  1. **Lightweight tags**: a name/label points to a particular commit.
+  2. **Annotated tags**: stores extra meta data including author's name and email, the date, and a tagging message (like a commit message).
+- Semantic Versioning:
 
-### Reflogs
+  - e.g. **2.4.1**
+    - **2**: major release
+    - **4**: minor release
+    - **1**: patch release
+  - Generally, the first version will be 1.0.0
+  - Patch releases normally do not contain new features or significant changes. They typically signify bugs fixes and other changes that do not impact how the code is used.
+  - Minor releases signify that new features or functionality have been added. The new functionality should be optional and can't force users to rewrite their own codes.
+  - Major releases signify significant changes that might no longer backwards compatible. Features may be removed or changed substantially.
+  - **git tag**: view all the tags in current repo
+  - **git tag -l "\*beta"**: search particular tags that include "beta" in their name
+  - **gti diff tag1 tag2**: compares the differences between two tags
+  - **git tag tagName**: create a lightweight tag on current HEAD commit
+  - **git tag -a tagName**L create an annotated tag on current HEAD commit
 
-### Custom Git Aliases -->
+  - **git tag tagName commitHash**: create a tag fro previous commit by providing the commit hash.
+  - **git tag tagName -f**: change a tag from one commit to another commit
+  - **git tag -d tagName**: delete a tag
+  - **git push --tags**: push tags to remote servers. By default, git push command will not transfer tags to remote server so you have to use this command to do so.
+
+---
+
+### Reflogs: retrieves lost work
+
+- Git keeps a record of when the tips of branches (HEAD) and other references were updated in the repo.
+- We can view and update these reference logs using the **git reflog** command.
+- It only keeps record for your local activity which means they are not shared with other collaborators.
+- Moreover, reflogs can expire. Git cleans out old entries after around 90 days though this can be configured.
+- **git reflog show HEAD**
