@@ -358,31 +358,48 @@
   - Developers make changes and push to their own forks before making pull requests.
   - very commonly used on large open-source projects where there may be thousands of contributors with only a couple maintainers
 
-  ***
+---
 
 ### Rebasing
 
 - Why we are using rebase command?
-  - as an alternative to merging to help combine changes from two branches
+  - as an alternative to merging to help combine changes from two branches; No unnecessary merge commits
   - as a cleanup tool
+- The feature branch might have a bunch of merge commits. If the master branch is very active, those feature branch's history will be muddied or less clean.
+- We can instead rebase the feature branch onto the master branch.
+- this moves entire feature branch so that it begins at the tip of the master branch.
+- All of the work is still there, but we have re-written history.
+- Rebasing rewrites history by creating new commits for each of the original feature branch commits
+- **git switch feature**
+- **git rebase master**
+- When not to rebase?
+  - Never rebase commits that have been shared with others.
+  - If you have already pushed commits up to GitHub because when the rebase, the history/ hash of those commits will change and your coworkers or collaborator will have lots of pains to solve this problem.
 
-<!--
+---
 
 ### Interactive Rebase - History Cleanup
 
+- Sometimes we want to rewrite, delete, rename, or even reorder commits before sharing them. We can use **git rebase**;
+- Running git rebase with the -i option will enter the interactive mode, which allows us to edit commits, add files, drop commits, etc.
+- Note that we need to specify how far back we want to rewrite commits.
+- Note that we are not rebasing onto another branch. instead, we are rebasing a series of commits onto the HEAD they currently are based on.
+- Procedures:
+  1. **git rebase -i HEAD~4** // go back 4 commits
+  2. text editor opens
+  3. a list of commits alongside a list of commits we previously chose from:
+  - **pick** - use the commit
+  - **reword** - use the commit but edit the commit message
+  - **edit** - use commit but stop for amending
+  - **fixup** - use commit contents but meld it into previous commit and discard the commit message
+  - **drop** - remove commit
 
+<!--
 
 ### Git Tags
 
-
-
 ### Hashing & Objects
 
-
-
-
 ### Reflogs
-
-
 
 ### Custom Git Aliases -->
