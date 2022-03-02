@@ -427,10 +427,36 @@
 
 ---
 
-### Reflogs: retrieves lost work
+### Reflogs:
 
 - Git keeps a record of when the tips of branches (HEAD) and other references were updated in the repo.
 - We can view and update these reference logs using the **git reflog** command.
 - It only keeps record for your local activity which means they are not shared with other collaborators.
-- Moreover, reflogs can expire. Git cleans out old entries after around 90 days though this can be configured.
+- Moreover, reflog can expire. Git cleans out old entries after around 90 days though this can be configured.
 - **git reflog show HEAD**
+- **name@{qualifier}**: we can access specific git refs by using this syntax.
+- timed references: filter reflog entries by time/dates
+  - **git reflog master@{one.week.ago/yesterday/3.minutes.ago}**
+- rescue lost commits/undo rebase with reflog:
+  1. use git reflog to fund the hash of that commit
+  2. git checkout that commit hash
+  3. git reset --hard that commit hash
+
+---
+
+### Git Aliases
+
+- We can easily set up Git aliases to make our Git experience a bit simpler and faster in the .gitconfig file
+- For example, change "git commit" to "git ci"
+- The Syntax example:
+
+  ```
+  [alias]
+    ci = commit
+  ```
+
+- We can also do this in CLI:
+  ```
+    gti config --global alias.ci commit
+  ```
+- [Existing useful aliases](https://www.durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/)
